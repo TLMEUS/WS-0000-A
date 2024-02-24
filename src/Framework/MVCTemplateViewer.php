@@ -1,13 +1,14 @@
 <?php
 /**
- * This file contains the App/Framework/MVCTemplateViewer.php class for project WS-0000-A.
+ * This file contains the src/Framework/MVCTemplateViewer.php class for project WS-0000-A.
  *
  * File information:
  * Project Name: WS-0000-A
- * Module Name: App/Framework
+ * Module Name: Source
+ * Group Name: Framework
  * File Name: MVCTemplateViewer.php
  * File Author: Troy L Marker
- * Language: PHP 8.2
+ * Language: PHP 8.3
  *
  * File Copyright: 01/2024
  */
@@ -25,7 +26,7 @@ class MVCTemplateViewer implements TemplateViewerInterface {
     /**
      * Renders the given template with the provided data and returns the rendered result as a string.
      *
-     * @param string $template The path to the template file relative to the view's directory.
+     * @param string $template The path to the template file relative to the views directory.
      * @param array $data Optional. The data to be passed into the template. Default is an empty array.
      *
      * @return string The rendered template as a string.
@@ -41,8 +42,7 @@ class MVCTemplateViewer implements TemplateViewerInterface {
         $code = $this->loadIncludes($views_dir, $code);
         $code = $this->replaceVariables($code);
         $code = $this->replacePHP($code);
-        $code = $this->replaceComments($code);
-        extract($data, EXTR_SKIP);
+        extract(array: $data, flags: EXTR_SKIP);
         ob_start();
         eval("?>$code");
         return ob_get_clean();
@@ -72,9 +72,6 @@ class MVCTemplateViewer implements TemplateViewerInterface {
         return preg_replace(pattern: "#{%\s*(.+)\s*%}#", replacement: "<?php $1 ?>", subject: $code);
     }
 
-    private function replaceComments(string $code): string {
-        return preg_replace(pattern: "#{\#(.+)\#}#", replacement: "<?-- $1 -->", subject: $code );
-    }
     /**
      * Extracts the content of all block tags in the given code and returns them as an associative array.
      *

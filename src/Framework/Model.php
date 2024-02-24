@@ -1,13 +1,16 @@
 <?php
 /**
- * This file contains the App/Framework/Model.php interface for project WS-0000-A.
+ * This file contains the src/Framework/Model.php interface for project WS-0000-A.
+ * Based on work learned in the Udemy class "Write PHP Like a Pro: Build a
+ * PHP MVC Framework From Scratch" taught by Dave Hollingworth.
  *
  * File information:
  * Project Name: WS-0000-A
- * Module Name: App/Framework
+ * Module Name: Source
+ * Group Name: Framework
  * File Name: Model.php
  * File Author: Troy L Marker
- * Language: PHP 8.2
+ * Language: PHP 8.3
  *
  * File Copyright: 01/2024
  */
@@ -22,7 +25,7 @@ use PDOException;
 /**
  * Class Model
  *
- * The base model class for database interaction.
+ * The base.tmp model class for database interaction.
  */
 abstract class Model {
     protected string $table;
@@ -49,7 +52,7 @@ abstract class Model {
         $assignments = array_keys($data);
         array_walk(array: $assignments, callback: function (&$value) {$value = "$value = ?";});
         $sql .= " SET " . implode(separator: ", ", array: $assignments);
-        $sql .= " WHERE id = ?";
+        $sql .= " WHERE colId = ?";
         $conn = $this->database->getConnection();
         $stmt = $conn->prepare($sql);
         $i = 1;
@@ -124,7 +127,6 @@ abstract class Model {
      * @noinspection PhpUnused
      */
     private function getTable(): string {
-        /** @noinspection PhpConditionAlreadyCheckedInspection */
         if ($this->table !== null) {
             return $this->table;
         }
@@ -171,9 +173,9 @@ abstract class Model {
         $conn = $this->database->getConnection();
         $sql = "SELECT * FROM {$this->getTable()} WHERE colId = :id";
         $stmt = $conn->prepare($sql);
-        $stmt->bindValue(":id", $id, PDO::PARAM_INT);
+        $stmt->bindValue(param: ":id", value: $id, type: PDO::PARAM_INT);
         $stmt->execute();
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        return $stmt->fetch(mode: PDO::FETCH_ASSOC);
     }
 
 
@@ -186,6 +188,8 @@ abstract class Model {
      * @return array|bool An associative array representing the retrieved row if found; otherwise, false.
      *
      * @throws PDOException If an error occurs during the database query execution.
+     *
+     * @noinspection PhpUnused
      */
     public function findByKey(string $key, string $value): array|bool {
         $conn = $this->database->getConnection();
@@ -240,7 +244,7 @@ abstract class Model {
      * @noinspection PhpUnused
      */
     public function delete(string $id): bool {
-        $sql = "DELETE FROM {$this->getTable()} WHERE id = :id";
+        $sql = "DELETE FROM {$this->getTable()} WHERE colId = :id";
         $conn = $this->database->getConnection();
         $stmt = $conn->prepare($sql);
         $stmt->bindValue(param: ":id", value: $id, type: PDO::PARAM_INT);

@@ -1,13 +1,16 @@
 <?php
 /**
- * This file contains the App/Framework/ControllerRequestHandler.php class for project WS-0000-A.
+ * This file contains the src/Framework/ControllerRequestHandler.php class for project WS-0000-A.
+ * Based on work learned in the Udemy class "Write PHP Like a Pro: Build a
+ * PHP MVC Framework From Scratch" taught by Dave Hollingworth.
  *
  * File information:
  * Project Name: WS-0000-A
- * Module Name: App/Framework
+ * Module Name: Source
+ * Group Name: Framework
  * File Name: ControllerRequestHandler.php
  * File Author: Troy L Marker
- * Language: PHP 8.2
+ * Language: PHP 8.3
  *
  * File Copyright: 01/2024
  */
@@ -31,9 +34,9 @@ class ControllerRequestHandler implements RequestHandlerInterface {
      *
      * @return void
      */
-    public function __construct(private readonly Controller $controller,
-                                private readonly string     $action,
-                                private array               $args) {
+    public function __construct(private Controller $controller,
+                                private string     $action,
+                                private array      $args) {
     }
 
     /**

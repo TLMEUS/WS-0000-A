@@ -1,12 +1,13 @@
 <?php
 /**
- * This file contains the App/Framework/Response.php interface for the TLME Framework.
+ * This file contains the src/Framework/Response.php interface for project WS-0000-A.
  * Based on work learned in the Udemy class "Write PHP Like a Pro: Build a
  * PHP MVC Framework From Scratch" taught by Dave Hollingworth.
  *
  * File information:
- * Project Name: TLME Framework
- * Module Name: App/Framework
+ * Project Name: WS-0000-A
+ * Module Name: Source
+ * Group Name: Framework
  * File Name: Response.php
  * File Author: Troy L Marker
  * Language: PHP 8.3

@@ -1,13 +1,16 @@
 <?php
 /**
- * This file contains the App/Framework/MiddlewareRequestHandler.php interface for project WS-0000-A.
+ * This file contains the src/Framework/MiddlewareRequestHandler.php interface for project WS-0000-A.
+ * Based on work learned in the Udemy class "Write PHP Like a Pro: Build a
+ * PHP MVC Framework From Scratch" taught by Dave Hollingworth.
  *
  * File information:
  * Project Name: WS-0000-A
- * Module Name: App/Framework
+ * Module Name: Source
+ * Group Name: Framework
  * File Name: MiddlewareRequestHandler.php
  * File Author: Troy L Marker
- * Language: PHP 8.2
+ * Language: PHP 8.3
  *
  * File Copyright: 01/2024
  */
@@ -31,7 +34,8 @@ class MiddlewareRequestHandler implements RequestHandlerInterface {
 
      * @return void
      */
-    public function __construct(private array $middlewares, private ControllerRequestHandler $controller_handler) {
+    public function __construct(private array $middlewares,
+                                private ControllerRequestHandler $controller_handler) {
     }
 
     /**
@@ -40,7 +44,7 @@ class MiddlewareRequestHandler implements RequestHandlerInterface {
      *
      * @param Request $request The request to be handled.
      *
-     * @return Response The response generated after handling the request.
+     * @return Response|null The response generated after handling the request.
      */
     public function handle(Request $request): Response {
         $middleware = array_shift(array: $this->middlewares);

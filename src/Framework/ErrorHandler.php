@@ -1,13 +1,16 @@
 <?php
 /**
- * This file contains the App/Framework/Dotenv.php class for project WS-0000-A.
+ * This file contains the src/Framework/EventHandler.php class for project WS-0000-A.
+ * Based on work learned in the Udemy class "Write PHP Like a Pro: Build a
+ * PHP MVC Framework From Scratch" taught by Dave Hollingworth.
  *
  * File information:
  * Project Name: WS-0000-A
- * Module Name: App/Framework
- * File Name: Dotenv.php
+ * Module Name: Source
+ * Group Name: Framework
+ * File Name: EventHandler.php
  * File Author: Troy L Marker
- * Language: PHP 8.2
+ * Language: PHP 8.3
  *
  * File Copyright: 01/2024
  */

@@ -1,13 +1,16 @@
 <?php
 /**
- * This file contains the App/Framework/Router.php class for project WS-0000-A.
+ * This file contains the src/Framework/Response.php interface for project WS-0000-A.
+ * Based on work learned in the Udemy class "Write PHP Like a Pro: Build a
+ * PHP MVC Framework From Scratch" taught by Dave Hollingworth.
  *
  * File information:
  * Project Name: WS-0000-A
- * Module Name: App/Framework
- * File Name: Router.php
+ * Module Name: Source
+ * Group Name: Framework
+ * File Name: Response.php
  * File Author: Troy L Marker
- * Language: PHP 8.2
+ * Language: PHP 8.3
  *
  * File Copyright: 01/2024
  */
@@ -74,10 +77,10 @@ class Router {
         $route_path = trim($route_path, characters: "/");
         $segments = explode(separator: "/", string: $route_path);
         $segments = array_map(function(string $segment): string {
-            if (preg_match(pattern: "#^\{([a-z][a-z0-9]*)\}$#", subject: $segment, matches: $matches)) {
+            if (preg_match(pattern: "#^\{([a-z][a-z0-9]*)}$#", subject: $segment, matches: $matches)) {
                 return "(?<" . $matches[1] . ">[^/]*)";
             }
-            if (preg_match(pattern: "#^\{([a-z][a-z0-9]*):(.+)\}$#", subject: $segment, matches: $matches)) {
+            if (preg_match(pattern: "#^\{([a-z][a-z0-9]*):(.+)}$#", subject: $segment, matches: $matches)) {
                 return "(?<" . $matches[1] . ">" . $matches[2] . ")";
             }
             return $segment;

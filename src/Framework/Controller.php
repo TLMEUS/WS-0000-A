@@ -1,13 +1,16 @@
 <?php
 /**
- * This file contains the App/Framework/Controller.php class for project WS-0000-A.
+ * This file contains the src/Framework/Controller.php class for project WS-0000-A.
+ * Based on work learned in the Udemy class "Write PHP Like a Pro: Build a
+ * PHP MVC Framework From Scratch" taught by Dave Hollingworth.
  *
  * File information:
  * Project Name: WS-0000-A
- * Module Name: App/Framework
+ * Module Name: Source
+ * Group Name: Framework
  * File Name: Controller.php
  * File Author: Troy L Marker
- * Language: PHP 8.2
+ * Language: PHP 8.3
  *
  * File Copyright: 01/2024
  */
@@ -18,7 +21,7 @@ namespace Framework;
 /**
  * Class Controller
  *
- * This abstract class serves as the base class for all controllers in the system.
+ * This abstract class serves as the base.tmp class for all controllers in the system.
  * It provides common functionality for managing request and response objects, as well as rendering views and performing redirects.
  */
 abstract class Controller{
